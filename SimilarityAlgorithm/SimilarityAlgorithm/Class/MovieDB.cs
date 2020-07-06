@@ -41,7 +41,10 @@ namespace SimilarityAlgorithm.Class
             {
                 foreach ( var data in this.datas )
                 {
-                    ListMovie.Add( MovieHelper.GetDataMovieFromString( data ) );
+                    if ( !string.IsNullOrEmpty( data ) )
+                    {
+                        ListMovie.Add( MovieHelper.GetDataMovieFromString( data ) );
+                    }
                 }
 
                 return this;

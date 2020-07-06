@@ -42,7 +42,10 @@ namespace SimilarityAlgorithm.Class
             {
                 foreach ( var data in this.datas )
                 {
-                    ListRating.Add( RatingHelper.GetDataRatingFromString( data ) );
+                    if ( !string.IsNullOrEmpty( data ) )
+                    {
+                        ListRating.Add( RatingHelper.GetDataRatingFromString( data ) );
+                    }
                 }
 
                 return this;

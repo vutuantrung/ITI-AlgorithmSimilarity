@@ -42,7 +42,10 @@ namespace SimilarityAlgorithm.Class
             {
                 foreach ( var data in this.datas )
                 {
-                    ListPerson.Add( PersonHelper.GetPersonDataFromString( data ) );
+                    if ( !string.IsNullOrEmpty( data ) )
+                    {
+                        ListPerson.Add( PersonHelper.GetPersonDataFromString( data ) );
+                    }
                 }
 
                 return this;
