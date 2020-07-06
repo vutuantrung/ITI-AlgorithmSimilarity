@@ -38,6 +38,15 @@ namespace SimilarityAlgorithm
             var listMovie = movieDB.ListMovie;
             var listRating = ratingDB.ListRating;
 
+            var movieArrayTwoDimensions = MovieHelper.CreateArrayTwoDimension
+            (
+                rowsLength: listPerson.Count + 1,
+                colsLength: listMovie.Count + 1,
+                listRating: listRating
+            );
+            var movieSimilarityArray = SimilarityHelper.CalculateSimilarityMatrix( movieArrayTwoDimensions );
+
+
             Console.Read();
         }
     }
