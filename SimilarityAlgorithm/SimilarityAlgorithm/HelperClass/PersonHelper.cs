@@ -18,8 +18,9 @@ namespace SimilarityAlgorithm.HelperClass
                 Gender = datas[1] == "F" 
                             ? Gender.Female 
                             : Gender.Male,
+                Occupation = datas[3],
                 Age = Convert.ToInt32( datas[2] ),
-                ZipCode = datas[3]
+                ZipCode = datas[4]
             };
 
             return person;
