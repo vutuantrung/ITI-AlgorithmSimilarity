@@ -11,8 +11,6 @@ namespace SimilarityAlgorithm.Class
 
         public string Title { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
-
-        public List<MovieGenre> Genres { get; set; }
+        public string[] Genres { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace SimilarityAlgorithm.Class
 
         public Gender Gender { get; set; }
 
-        public Occupation Occupation { get; set; }
+        public string Occupation { get; set; }
 
         public string ZipCode { get; set; }
     }
