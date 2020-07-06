@@ -1,5 +1,7 @@
-﻿using SimilarityAlgorithm.HelperClass;
+﻿using SimilarityAlgorithm.Class;
+using SimilarityAlgorithm.HelperClass;
 using System;
+using System.Collections.Generic;
 
 namespace SimilarityAlgorithm
 {
@@ -20,7 +22,21 @@ namespace SimilarityAlgorithm
 
         static void Main( string[] args )
         {
-            var similarityMatrix = Helper.CalculateSimilarityMatrix( maTrixUserBasedExample );
+            var personDB = new PersonDB.Builder().LoadDB( StaticData.PersonsDataPath )
+                                                 .GetAllPersonsFromDB()
+                                                 .Build();
+
+            var movieDB = new MovieDB.Builder().LoadDB( StaticData.MoviesDataPath )
+                                               .GetAllMoviesFromDB()
+                                               .Build();
+
+            var ratingDB = new RatingDB.Builder().LoadDB( StaticData.RatingsDataPath )
+                                                 .GetAllRatingsFromDB()
+                                                 .Build();
+
+            var listPerson = personDB.ListPerson;
+            var listMovie = movieDB.ListMovie;
+            var listRating = ratingDB.ListRating;
 
             Console.Read();
         }
