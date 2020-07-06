@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace SimilarityAlgorithm.HelperClass
 {
-    public class MovieHelper
+    public static class MovieHelper
     {
         public static Movie GetDataMovieFromString( string movieDataString )
         {
@@ -14,12 +15,23 @@ namespace SimilarityAlgorithm.HelperClass
 
             var movie = new Movie
             {
-                ID = Convert.ToSByte( datas[0] ),
+                ID = Convert.ToInt32( datas[0] ),
                 Title = datas[1],
                 Genres = datas[2].Split( '|' )
             };
 
             return movie;
+        }
+
+        public static float[,] CreateArrayTwoDimension( int rowsLength, int colsLength, List<Rating> listRating )
+        {
+            float[,] newArr = new float[rowsLength, colsLength];
+            foreach ( var rating in listRating )
+            {
+                newArr[rating.UserID, rating.MovieID] = rating.RatingNote;
+            }
+
+            return newArr;
         }
     }
 }
