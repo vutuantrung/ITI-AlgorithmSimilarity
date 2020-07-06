@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimilarityAlgorithm.Enum;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,38 +7,70 @@ namespace SimilarityAlgorithm.HelperClass
 {
     public static class Helper
     {
-        public static float[,] CalculateSimilarityMatrix( float[,] data )
+        public static Occupation ConvertStringToOccupation( string occupation )
         {
-            var rows = data.GetLength(0);
-            var cols = data.GetLength(1);
-
-            float[,] similarityMatrix = new float[rows, cols];
-
-            for ( int i = 0; i < rows; i++ )
+            switch ( occupation.ToLower() )
             {
-                for ( int j = 0; j < cols; j++ )
-                {
-                    similarityMatrix[i, j] = Helper.GetCosineSimilarity( data, i, j );
-                }
+                case "administrator": return Occupation.Artist;
+                case "artist": return Occupation.Artist;
+                case "doctor": return Occupation.Artist;
+                case "educator": return Occupation.Artist;
+                case "engineer": return Occupation.Artist;
+                case "entertainment": return Occupation.Artist;
+                case "executive": return Occupation.Artist;
+                case "healthcare": return Occupation.Artist;
+                case "homemaker": return Occupation.Artist;
+                case "lawyer": return Occupation.Artist;
+                case "librarian": return Occupation.Artist;
+                case "marketing": return Occupation.Artist;
+                case "none": return Occupation.Artist;
+                case "other": return Occupation.Artist;
+                case "programmer": return Occupation.Artist;
+                case "retired": return Occupation.Artist;
+                case "salesman": return Occupation.Artist;
+                case "scientist": return Occupation.Artist;
+                case "student": return Occupation.Artist;
+                case "technician": return Occupation.Artist;
+                case "writer": return Occupation.Artist;
             }
 
-            return similarityMatrix;
+            throw new InvalidCastException( nameof( occupation ) );
         }
 
-        public static float GetCosineSimilarity( float[,] matrix, int rowIdx, int colIdx )
+        public static List<MovieGenre> ConvertToMovieGenreList( string[] data )
         {
-            int N = matrix.GetLength( 1 );
+            var listMovieGenre = new List<MovieGenre>();
 
-            float dot = 0.0f;
-            float mag1 = 0.0f;
-            float mag2 = 0.0f;
-            for ( int n = 0; n < N; n++ )
+            for ( int i = 0; i < data.Length; i++ )
             {
-                dot += matrix[rowIdx, n] * matrix[colIdx, n];
-                mag1 += matrix[rowIdx, n] * matrix[rowIdx, n];
-                mag2 += matrix[colIdx, n] * matrix[colIdx, n];
+                if ( i == 0 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Unknown );
+                if ( i == 1 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Action );
+                if ( i == 2 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Adventure );
+                if ( i == 3 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Animation );
+                if ( i == 4 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Children );
+                if ( i == 5 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Comedy );
+                if ( i == 6 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Crime );
+                if ( i == 7 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Documentary );
+                if ( i == 8 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Drama );
+                if ( i == 9 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Fantasy );
+                if ( i == 10 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.FilmNoir );
+                if ( i == 11 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Horror );
+                if ( i == 12 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Musical );
+                if ( i == 13 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Mystery );
+                if ( i == 14 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Romance );
+                if ( i == 15 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.SciFi );
+                if ( i == 16 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Thriller );
+                if ( i == 17 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.War );
+                if ( i == 18 && data[i] == "1" ) listMovieGenre.Add( MovieGenre.Western );
             }
-            return dot / (float)( Math.Sqrt( mag1 ) * Math.Sqrt( mag2 ) );
+
+            return listMovieGenre;
+        }
+
+        public static string[] SplitString( this string textString, string splitString, StringSplitOptions stringSplitOptions = StringSplitOptions.None )
+        {
+            string[] stringArr = textString.Split( new string[] { splitString }, stringSplitOptions );
+            return stringArr;
         }
     }
 }
