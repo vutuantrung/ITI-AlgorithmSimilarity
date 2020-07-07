@@ -1,4 +1,5 @@
-﻿using SimilarityAlgorithm.Class;
+﻿using CL_Helper;
+using SimilarityAlgorithm.Class;
 using SimilarityAlgorithm.HelperClass;
 using System;
 using System.Collections.Generic;

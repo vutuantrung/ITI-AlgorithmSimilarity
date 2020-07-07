@@ -1,7 +1,7 @@
 ﻿using SimilarityAlgorithm.Class;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using CL_Helper;
 using System.Linq;
 using System.Text;
 

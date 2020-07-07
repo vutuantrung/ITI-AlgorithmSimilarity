@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using CL_Helper;
 
 namespace SimilarityAlgorithm.Class
 {

@@ -1,7 +1,7 @@
 ﻿using SimilarityAlgorithm.Class;
 using SimilarityAlgorithm.Enum;
 using System;
-using System.Collections.Generic;
+using CL_Helper;
 using System.Text;
 
 namespace SimilarityAlgorithm.HelperClass
