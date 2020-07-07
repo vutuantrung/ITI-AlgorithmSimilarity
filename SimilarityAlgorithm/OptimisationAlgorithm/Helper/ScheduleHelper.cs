@@ -11,16 +11,22 @@ namespace OptimisationAlgorithm.Helper
         {
             string[] datas = ScheduleDataString.Split( "," );
 
-            var Schedule = new Schedule
+            var schedule = new Schedule
             {
                 DepartAirportCode = datas[0],
                 ArrivedAirportCode = datas[1],
-                DepartTime = datas[2],
-                ArrivedTime = datas[3],
+                DepartTime = ConvertToMinutes( datas[2] ),
+                ArrivedTime = ConvertToMinutes( datas[3] ),
                 Price = Convert.ToInt32( datas[4] )
             };
 
-            return Schedule;
+            return schedule;
+        }
+
+        public static float ConvertToMinutes( string minuteString )
+        {
+            var datas = minuteString.Split( ':' );
+            return float.Parse( datas[0] ) + ( Convert.ToInt32( datas[2] ) / 60 );
         }
     }
 }

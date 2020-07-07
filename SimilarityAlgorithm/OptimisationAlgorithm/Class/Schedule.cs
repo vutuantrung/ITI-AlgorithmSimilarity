@@ -10,9 +10,9 @@ namespace OptimisationAlgorithm.Class
 
         public string ArrivedAirportCode { get; set; }
 
-        public string DepartTime { get; set; }
+        public float DepartTime { get; set; }
 
-        public string ArrivedTime { get; set; }
+        public float ArrivedTime { get; set; }
 
         public int Price { get; set; }
     }
